@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Node
+node_modules/
+package-lock.json
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Local backend data / real uploaded data
+backend/data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Hyperledger generated private material
+organizations/
+system-genesis-block/
+channel-artifacts/
+crypto-config/
+fabric-samples/
+*.pem
+*.key
+*.crt
+*_sk
+*.tar.gz
+
+# OS/editor
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log

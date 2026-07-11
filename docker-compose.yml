@@ -1,0 +1,24 @@
+services:
+  api:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    environment:
+      ENVIRONMENT: development
+      AUTH_DISABLED: "true"
+      JWT_SECRET: dev-secret-change-me
+      CORS_ORIGINS: http://localhost:8000,http://127.0.0.1:8000,http://localhost:8080
+      DATA_DIR: /app/data
+      FABRIC_CHANNEL: intelguard-channel
+      FABRIC_CHAINCODE: auditcc
+      FABRIC_FUNCTION: CreateAuditReceipt
+      FABRIC_MSP_ID: SCRBMSP
+      FABRIC_GATEWAY_URL: ${FABRIC_GATEWAY_URL:-}
+    volumes:
+      - ./backend/data:/app/data
+  frontend:
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
